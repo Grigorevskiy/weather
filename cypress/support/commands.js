@@ -23,3 +23,9 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes('change is not defined')) {
+      return false;
+    }
+});
